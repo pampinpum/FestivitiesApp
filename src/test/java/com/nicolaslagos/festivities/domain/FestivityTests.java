@@ -8,6 +8,10 @@ import java.util.Calendar;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * @author Nicolas Lagos
+ *
+ */
 public class FestivityTests {
 	
 	private Festivity festivity;
@@ -17,6 +21,9 @@ public class FestivityTests {
 		festivity = new Festivity();
 	}
 	
+	/**
+	 * tests id setter and getter
+	 */
 	@Test
 	public void testSetAndGetId(){
 		int testId = 0;
@@ -25,6 +32,9 @@ public class FestivityTests {
 		assertEquals(testId, festivity.getId());
 	}
 	
+	/**
+	 * tests name setter and getter
+	 */
 	@Test
 	public void testSetAndGetFestName(){
 		String testFestname = "aFestName";
@@ -33,6 +43,9 @@ public class FestivityTests {
 		assertEquals(testFestname, festivity.getFestname());
 	}
 	
+	/**
+	 * tests place setter and getter
+	 */
 	@Test
 	public void testSetAndGetFestPlace(){
 		String testFestplace = "aFestPlace";
@@ -41,6 +54,9 @@ public class FestivityTests {
 		assertEquals(testFestplace, festivity.getFestplace());
 	}
 	
+	/**
+	 * tests startdate setter and getter
+	 */
 	@Test
 	public void testSetAndGetFestStartDate(){
 		Timestamp testFeststartdate = new Timestamp(Calendar.getInstance().getTimeInMillis());
@@ -49,6 +65,9 @@ public class FestivityTests {
 		assertEquals(testFeststartdate, festivity.getFeststartdate());
 	}
 	
+	/**
+	 * tests enddate setter and getter
+	 */
 	@Test
 	public void testSetAndGetFestEndDate(){
 		Timestamp testFestenddate = new Timestamp(Calendar.getInstance().getTimeInMillis());
