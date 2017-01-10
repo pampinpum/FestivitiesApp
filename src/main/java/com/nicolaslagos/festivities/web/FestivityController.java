@@ -27,9 +27,8 @@ public class FestivityController {
 	    }	 
 	    
 	    @POST
-	    @Consumes("application/xml")
+	    @Consumes("application/xml,application/json")
 	    public Response addFestivity(Festivity festivity){
-	    	System.out.println(festivity.getFeststartdate());
 	    	FestivityDao.getInstance().addFestivity(festivity);	        
 	        return Response.ok().build();
 	    }	    

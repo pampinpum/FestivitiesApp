@@ -47,8 +47,11 @@ public class FestivityDao {
         session.close();        
     }
     
+    /**
+     * Adds a list of festivities
+     * @param listFestivity List of festivities
+     */
     public void addListFestivity(List<Festivity> listFestivity){
-    	try{
     	for (Festivity festivity : listFestivity){
     		Session session = SessionUtil.getSession();        
             Transaction tx = session.beginTransaction();
@@ -56,9 +59,6 @@ public class FestivityDao {
             tx.commit();
             session.close();     
     	}    	
-    	}catch (Exception ex){
-    		System.out.println("ERRRRRRROR" + ex.getMessage());
-    	}
     }
     
     /**

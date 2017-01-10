@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.AssertTrue;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -21,9 +22,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 public class Festivity implements Serializable {
     private static final long serialVersionUID = 3544446172022893379L;
-    @XmlElement   
-    @Column(name = "end", nullable = false)
-    private Date end;
+    
+    @Id
+    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private int id;
     @XmlElement
     @Column(name = "name", nullable = false)
     private String name;
@@ -32,15 +35,14 @@ public class Festivity implements Serializable {
     private String place;
     @XmlElement
     @Column(name = "start", nullable = false)
-    private Date start;
-    @Id
-    @Column(name = "id", nullable = false)
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private int id;
+    private Date start;   
+    @XmlElement   
+    @Column(name = "end", nullable = false)
+    private Date end;
 
     public Festivity() {
     }
-
+    
     public Festivity(Timestamp end, String name, String place, Date start, int id) {
         this.end = end;
         this.name = name;
@@ -48,6 +50,14 @@ public class Festivity implements Serializable {
         this.start = start;
         this.id = id;
     }
+    
+    @AssertTrue(message="Start date should never be greater than the end date")
+    private boolean isDatesValid() {
+      return ("0".equals(String.valueOf(this.start.compareTo(end))) || "1".equals(String.valueOf(this.start.compareTo(end)))
+    		  ? false : true);
+      
+    }
+
 
     public Date getFestenddate() {
         return end;
