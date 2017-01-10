@@ -15,6 +15,26 @@ import com.nicolaslagos.festivities.util.SessionUtil;
  */
 public class FestivityDao {
     
+	private static FestivityDao festivityDao;
+	
+	/**
+	 * Singleton, returns the unique instance of FestivityDao
+	 * @return festivityDao instance
+	 */
+	public static synchronized FestivityDao getInstance(){
+		if(festivityDao == null)
+			festivityDao = new FestivityDao();
+		return festivityDao;		
+	}
+	
+	/**
+	 * Overrides Object clone() to prevent it
+	 */
+	@Override
+	public Object clone() throws CloneNotSupportedException{
+		throw new CloneNotSupportedException();
+	}
+	
 	/**
 	 * Adds a new festivity
 	 * @param festivity to be added
@@ -25,6 +45,20 @@ public class FestivityDao {
         session.save(festivity);      
         tx.commit();
         session.close();        
+    }
+    
+    public void addListFestivity(List<Festivity> listFestivity){
+    	try{
+    	for (Festivity festivity : listFestivity){
+    		Session session = SessionUtil.getSession();        
+            Transaction tx = session.beginTransaction();
+            session.save(festivity);      
+            tx.commit();
+            session.close();     
+    	}    	
+    	}catch (Exception ex){
+    		System.out.println("ERRRRRRROR" + ex.getMessage());
+    	}
     }
     
     /**

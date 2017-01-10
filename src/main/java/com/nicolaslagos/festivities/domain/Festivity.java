@@ -3,25 +3,36 @@ package com.nicolaslagos.festivities.domain;
 import java.io.Serializable;
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 
+@XmlRootElement (name = "festivity")
+@XmlAccessorType(XmlAccessType.FIELD)
 @Entity
 public class Festivity implements Serializable {
     private static final long serialVersionUID = 3544446172022893379L;
-    @Column(name = "festenddate", nullable = false)
-    private Timestamp festenddate;
-    @Column(name = "festname", nullable = false)
-    private String festname;
-    @Column(name = "festplace", nullable = false)
-    private String festplace;
-    @Column(name = "feststartdate", nullable = false)
-    private Timestamp feststartdate;
+    @XmlElement   
+    @Column(name = "end", nullable = false)
+    private Date end;
+    @XmlElement
+    @Column(name = "name", nullable = false)
+    private String name;
+    @XmlElement
+    @Column(name = "place", nullable = false)
+    private String place;
+    @XmlElement
+    @Column(name = "start", nullable = false)
+    private Date start;
     @Id
     @Column(name = "id", nullable = false)
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -30,44 +41,44 @@ public class Festivity implements Serializable {
     public Festivity() {
     }
 
-    public Festivity(Timestamp festenddate, String festname, String festplace, Timestamp feststartdate, int id) {
-        this.festenddate = festenddate;
-        this.festname = festname;
-        this.festplace = festplace;
-        this.feststartdate = feststartdate;
+    public Festivity(Timestamp end, String name, String place, Date start, int id) {
+        this.end = end;
+        this.name = name;
+        this.place = place;
+        this.start = start;
         this.id = id;
     }
 
-    public Timestamp getFestenddate() {
-        return festenddate;
+    public Date getFestenddate() {
+        return end;
     }
 
-    public void setFestenddate(Timestamp festenddate) {
-        this.festenddate = festenddate;
+    public void setFestenddate(Timestamp end) {
+        this.end = end;
     }
 
     public String getFestname() {
-        return festname;
+        return name;
     }
 
-    public void setFestname(String festname) {
-        this.festname = festname;
+    public void setFestname(String name) {
+        this.name = name;
     }
 
     public String getFestplace() {
-        return festplace;
+        return place;
     }
 
-    public void setFestplace(String festplace) {
-        this.festplace = festplace;
+    public void setFestplace(String place) {
+        this.place = place;
     }
 
-    public Timestamp getFeststartdate() {
-        return feststartdate;
+    public Date getFeststartdate() {
+        return start;
     }
 
-    public void setFeststartdate(Timestamp feststartdate) {
-        this.feststartdate = feststartdate;
+    public void setFeststartdate(Timestamp start) {
+        this.start = start;
     }
 
     public int getId() {
