@@ -38,9 +38,9 @@ public class FestivityTests {
 	@Test
 	public void testSetAndGetFestName(){
 		String testFestname = "aFestName";
-		assertNull(festivity.getFestname());
-		festivity.setFestname(testFestname);
-		assertEquals(testFestname, festivity.getFestname());
+		assertNull(festivity.getName());
+		festivity.setName(testFestname);
+		assertEquals(testFestname, festivity.getName());
 	}
 	
 	/**
@@ -49,9 +49,9 @@ public class FestivityTests {
 	@Test
 	public void testSetAndGetFestPlace(){
 		String testFestplace = "aFestPlace";
-		assertNull(festivity.getFestplace());
-		festivity.setFestplace(testFestplace);
-		assertEquals(testFestplace, festivity.getFestplace());
+		assertNull(festivity.getPlace());
+		festivity.setPlace(testFestplace);
+		assertEquals(testFestplace, festivity.getPlace());
 	}
 	
 	/**
@@ -60,9 +60,9 @@ public class FestivityTests {
 	@Test
 	public void testSetAndGetFestStartDate(){
 		Timestamp testFeststartdate = new Timestamp(Calendar.getInstance().getTimeInMillis());
-		assertNull(festivity.getFeststartdate());
-		festivity.setFeststartdate(testFeststartdate);
-		assertEquals(testFeststartdate, festivity.getFeststartdate());
+		assertNull(festivity.getStartDate());
+		festivity.setStartDate(testFeststartdate);
+		assertEquals(testFeststartdate, festivity.getStartDate());
 	}
 	
 	/**
@@ -71,9 +71,9 @@ public class FestivityTests {
 	@Test
 	public void testSetAndGetFestEndDate(){
 		Timestamp testFestenddate = new Timestamp(Calendar.getInstance().getTimeInMillis());
-		assertNull(festivity.getFestenddate());
-		festivity.setFeststartdate(testFestenddate);
-		assertEquals(testFestenddate, festivity.getFeststartdate());
+		assertNull(festivity.getEndDate());
+		festivity.setStartDate(testFestenddate);
+		assertEquals(testFestenddate, festivity.getStartDate());
 	}
 
 

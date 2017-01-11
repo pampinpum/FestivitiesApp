@@ -2,7 +2,6 @@ package com.nicolaslagos.festivities.domain;
 
 import java.io.Serializable;
 
-import java.sql.Timestamp;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -43,7 +42,7 @@ public class Festivity implements Serializable {
     public Festivity() {
     }
     
-    public Festivity(Timestamp end, String name, String place, Date start, int id) {
+    public Festivity(Date end, String name, String place, Date start, int id) {
         this.end = end;
         this.name = name;
         this.place = place;
@@ -59,35 +58,35 @@ public class Festivity implements Serializable {
     }
 
 
-    public Date getFestenddate() {
+    public Date getEndDate() {
         return end;
     }
 
-    public void setFestenddate(Timestamp end) {
+    public void setEndDate(Date end) {
         this.end = end;
     }
 
-    public String getFestname() {
+    public String getName() {
         return name;
     }
 
-    public void setFestname(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public String getFestplace() {
+    public String getPlace() {
         return place;
     }
 
-    public void setFestplace(String place) {
+    public void setPlace(String place) {
         this.place = place;
     }
 
-    public Date getFeststartdate() {
+    public Date getStartDate() {
         return start;
     }
 
-    public void setFeststartdate(Timestamp start) {
+    public void setStartDate(Date start) {
         this.start = start;
     }
 
