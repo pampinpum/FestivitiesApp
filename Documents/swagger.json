@@ -1,0 +1,331 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Festivity API",
+        "description": "Festivities management API",
+        "version": "1.0.0"
+    },
+    "host": "api.uber.com",
+    "schemes": [
+        "https"
+    ],
+    "basePath": "/v1",
+    "produces": [
+        "application/json",
+        "application/xml"
+    ],
+    "paths": {
+        "/festivity": {
+            "get": {
+                "summary": "Festivity List",
+                "description": "Returns all the festivities store in the database\n",
+                "responses": {
+                    "200": {
+                        "description": "An array of festivities",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Festivity"
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "There are not return results"
+                    },
+                    "500": {
+                        "description": "An error happend belo the REST API layer"
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "formData",
+                        "description": "Festivity name",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "place",
+                        "in": "formData",
+                        "description": "Festivity place",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "start",
+                        "in": "formData",
+                        "description": "Festivity start date",
+                        "type": "string",
+                        "format": "date-time",
+                        "required": true
+                    },
+                    {
+                        "name": "end",
+                        "in": "formData",
+                        "description": "Festivity end date",
+                        "type": "string",
+                        "format": "date-time",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Echo POST"
+                    },
+                    "400": {
+                        "description": "Missing data while trying to create a new festivity"
+                    },
+                    "500": {
+                        "description": "An error happend belo the REST API layer"
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "formData",
+                        "description": "Festivity id",
+                        "type": "integer",
+                        "format": "int",
+                        "required": true
+                    },
+                    {
+                        "name": "name",
+                        "in": "formData",
+                        "description": "Festivity name",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "start",
+                        "in": "formData",
+                        "description": "Festivity start date",
+                        "type": "string",
+                        "format": "date-time",
+                        "required": true
+                    },
+                    {
+                        "name": "end",
+                        "in": "formData",
+                        "description": "Festivity end date",
+                        "type": "string",
+                        "format": "date-time",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Echo POST"
+                    },
+                    "500": {
+                        "description": "An error happend belo the REST API layer"
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/festivity/by": {
+            "get": {
+                "summary": "Get Festivity name with parameters",
+                "description": "Returns a list of festivities using the parameters that are sended \n",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "Festivity id.",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int"
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Festivity name.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "place",
+                        "in": "query",
+                        "description": "Festivity place.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "start",
+                        "in": "query",
+                        "description": "Festivity start date.",
+                        "required": false,
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    {
+                        "name": "end",
+                        "in": "query",
+                        "description": "Festivity start date.",
+                        "required": false,
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    {
+                        "name": "between1",
+                        "in": "query",
+                        "description": "First date in BETWEEN clause, MUST use both between1 and between2.",
+                        "required": false,
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    {
+                        "name": "between2",
+                        "in": "query",
+                        "description": "Sencond date in BETWEEN clause, MUST use both between1 and between2.",
+                        "required": false,
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of festivities",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Festivity"
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "There are not return results"
+                    },
+                    "500": {
+                        "description": "An error happend belo the REST API layer"
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/festivity/etl": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "formData",
+                        "description": "Festivity name",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "place",
+                        "in": "formData",
+                        "description": "Festivity place",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "start",
+                        "in": "formData",
+                        "description": "Festivity start date",
+                        "type": "string",
+                        "format": "date-time",
+                        "required": true
+                    },
+                    {
+                        "name": "end",
+                        "in": "formData",
+                        "description": "Festivity end date",
+                        "type": "string",
+                        "format": "date-time",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Echo POST"
+                    },
+                    "400": {
+                        "description": "Missing data while trying to create a new festivity"
+                    },
+                    "500": {
+                        "description": "An error happend belo the REST API layer"
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Festivity": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "format": "int",
+                    "description": "Unique identifier representing a specific festivity."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of festivity."
+                },
+                "place": {
+                    "type": "string",
+                    "description": "Place of festivity."
+                },
+                "start": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Festivity start date."
+                },
+                "end": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Festivity end date."
+                }
+            }
+        },
+        "Error": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "fields": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
